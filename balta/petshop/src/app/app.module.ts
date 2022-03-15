@@ -7,6 +7,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { ResetPasswordPageComponent } from './reset-password-page/reset-password-page.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
+import { PetsPageComponent } from './pets-page/pets-page.component';
+import { ProductsPageComponent } from './products-page/products-page.component';
+import { CartPageComponent } from './cart-page/cart-page.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,10 @@ import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
     NavbarComponent,
     LoginPageComponent,
     ResetPasswordPageComponent,
-    SignUpPageComponent
+    SignUpPageComponent,
+    PetsPageComponent,
+    ProductsPageComponent,
+    CartPageComponent
   ],
   imports: [
     BrowserModule,
