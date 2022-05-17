@@ -15,7 +15,7 @@ export class CustomValidator {
                 let equalDigits;
                 equalDigits = 1;
                 if (cpf.length < 11) {
-                    return { cpfNotValid: false };
+                    return false;
                 }
 
                 for (i = 0; i < cpf.length - 1; i++) {
@@ -36,7 +36,7 @@ export class CustomValidator {
                     result = sum % 11 < 2 ? 0 : 11 - (sum % 11);
 
                     if (result !== Number(digits.charAt(0))) {
-                        return { cpfNotValid: true };
+                        return true;
                     }
                     numbers = cpf.substring(0, 10);
                     sum = 0;
@@ -47,14 +47,14 @@ export class CustomValidator {
                     result = sum % 11 < 2 ? 0 : 11 - (sum % 11);
 
                     if (result !== Number(digits.charAt(1))) {
-                        return { cpfNotValid: true };
+                        return true;
                     }
-                    return { cpfNotValid: false };
+                    return false;
                 } else {
-                    return { cpfNotValid: true };
+                    return true;
                 }
             }
-            return { cpfNotValid: false };
+            return false;
         };
     }
 
