@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { Security } from 'src/app/utils/security.util';
 import { CustomValidator } from 'src/app/validators/custom.validator';
@@ -14,7 +14,7 @@ export class LoginPageComponent implements OnInit {
   public form!: FormGroup;
   public busy: boolean = false;
 
-  constructor(private service: DataService, private fb: FormBuilder) {
+  constructor(private service: DataService, private fb: FormBuilder, private router: Router) {
     this.form = this.fb.group({
       username: ['', Validators.compose([
         Validators.minLength(14),
@@ -37,7 +37,7 @@ export class LoginPageComponent implements OnInit {
     if (token) {
       this.busy = true;
       this.service.refreshToken().subscribe((data: any) => {
-        this.setUser(JSON.stringify(data.customer), JSON.stringify(data.token))
+        this.setUser(data.customer, data.token)
         this.busy = false;
       });
     } else {
@@ -50,12 +50,12 @@ export class LoginPageComponent implements OnInit {
     this.busy = true;
     this.service.authenticate(this.form.value).subscribe((data: any) => {
       this.busy = false;
-      this.setUser(JSON.stringify(data.customer), JSON.stringify(data.token))
+      this.setUser(data.customer, data.token)
     });
   }
 
   setUser(user: any, token: string) {
     Security.set(user, token);
-    // this.router.navigate(['/'])
+    this.router.navigate(['/'])
   }
 }
