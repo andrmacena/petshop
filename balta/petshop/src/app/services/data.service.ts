@@ -30,4 +30,8 @@ export class DataService {
    refreshToken() {
       return this.http.post(`${this.baseUrl}/accounts/refresh-token`, null, { headers: this.composeHeader() });
    }
+
+   create(data: any) {
+      return this.http.post(`${this.baseUrl}/accounts`, data)
+   }
 }
