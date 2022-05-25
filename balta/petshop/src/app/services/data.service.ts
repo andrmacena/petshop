@@ -34,4 +34,8 @@ export class DataService {
    create(data: any) {
       return this.http.post(`${this.baseUrl}/accounts`, data)
    }
+
+   resetPassword(data: any){
+      return this.http.post(`${this.baseUrl}/accounts/reset-password`, data)
+   }
 }
