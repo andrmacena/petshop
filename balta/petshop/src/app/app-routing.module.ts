@@ -14,10 +14,9 @@ const routes: Routes = [
   {
     path: '',
     component: FramePageComponent,
-    canActivate: [AuthService],
     children: [
       { path: '', component: ProductsPageComponent },
-      { path: 'cart', component: CartPageComponent }
+      { path: 'cart', component: CartPageComponent, canActivate: [AuthService] }
     ]
   },
   {
